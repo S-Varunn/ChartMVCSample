@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="ISO-8859-1" />
+    <title>Insert title here</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+    <!-- <script src="js/main.js"></script> -->
+  </head>
+  <body>
+    <h1>Hello! Welcome to the trail page of the Chart Component!</h1>
+    <br /><br />
+    <p>Click on the following to render a Chart Component</p>
+    <br />
+    <button id="bar">Bar Chart</button>
+    <button id="stacked-bar">Stacked Bar Chart</button>
+    <button id="grouped-bar">Grouped Bar Chart</button>
+    <div id="populate"></div>
+    <canvas id="myChart" style="width: 100%; max-width: 1000px"> </canvas>
+    <script>
+      window.onload = function () {
+        document.getElementById("bar").addEventListener("click", function () {
+          let request = new XMLHttpRequest();
+          request.open(
+            "GET",
+            "http://localhost:8040/ChartMVC/MyChart?name=bar"
+          );
+
+          request.onload = function () {
+            console.log(request.responseText);
+            let myBarData = JSON.parse(request.responseText);
+            const xValues = JSON.parse(JSON.stringify(myBarData.xvalues));
+            const yValues = JSON.parse(JSON.stringify(myBarData.yvalues));
+            const colours = [
+              "blue",
+              "black",
+              "yellow",
+              "orange",
+              "green",
+              "red",
+              "violet",
+              "brown",
+            ];
+            const barColours = [];
+            for (let i = 0; i < yValues.length; i++) {
+              barColours[i] = colours[Math.floor(Math.random() * 10)];
+            }
+            new Chart("myChart", {
+              type: "bar",
+              data: {
+                labels: xValues,
+                datasets: [
+                  {
+                    backgroundColor: barColours,
+                    data: yValues,
+                  },
+                ],
+              },
+              options: {
+                legend: { display: false },
+                title: {
+                  display: true,
+                  text: "Total Value Of Players In Club (club/eur)",
+                },
+              },
+            });
+          };
+          request.send();
+        });
+        document
+          .getElementById("stacked-bar")
+          .addEventListener("click", function () {
+            location.href =
+              "http://localhost:8040/ChartMVC/MyChart?name=stackedbar";
+          });
+        document
+          .getElementById("grouped-bar")
+          .addEventListener("click", function () {
+            location.href =
+              "http://localhost:8040/ChartMVC/MyChart?name=groupedbarchart";
+          });
+      };
+    </script>
+  </body>
+</html>
