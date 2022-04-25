@@ -2,20 +2,43 @@
 <html>
   <head>
     <meta charset="ISO-8859-1" />
-    <title>Insert title here</title>
+    <title>Chart Sample</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
-    <!-- <script src="js/main.js"></script> -->
   </head>
   <body>
-    <h1>Hello! Welcome to the trail page of the Chart Component!</h1>
-    <br /><br />
-    <p>Click on the following to render a Chart Component</p>
-    <br />
-    <button id="bar">Bar Chart</button>
-    <button id="stacked-bar">Stacked Bar Chart</button>
-    <button id="grouped-bar">Grouped Bar Chart</button>
-    <div id="populate"></div>
-    <canvas id="myChart" style="width: 100%; max-width: 1000px"> </canvas>
+    <div className="main-container">
+      <div className="headers">
+        <h1 style="display: flex; justify-content: center">
+          Hello! Welcome to the trail page of the Chart Component!!
+        </h1>
+        <p style="display: flex; justify-content: center">
+          Click on the following to render a Chart Component
+        </p>
+      </div>
+      <div
+        className="buttons"
+        style="display: flex; justify-content: center; padding: 8px"
+      >
+        <button id="bar" style="padding: 2px; margin: 6px">Bar Chart</button>
+        <button id="stacked-bar" style="padding: 2px; margin: 6px">
+          Stacked Bar Chart
+        </button>
+        <button id="grouped-bar" style="padding: 2px; margin: 6px">
+          Grouped Bar Chart
+        </button>
+      </div>
+      <canvas
+        id="myChart"
+        style="width: 100%; max-width: 1200px; max-height: 1000px; margin: auto"
+      >
+      </canvas>
+    </div>
+    <!-- <canvas
+      id="stackedChart"
+      style="width: 100%; max-width: 1200px; max-height: 1000px"
+    >
+    </canvas>
+    <canvas id="groupedChart" style="width: 100%; max-width: 1200px"> </canvas> -->
     <script>
       window.onload = function () {
         document.getElementById("bar").addEventListener("click", function () {
@@ -69,14 +92,141 @@
         document
           .getElementById("stacked-bar")
           .addEventListener("click", function () {
-            location.href =
-              "http://localhost:8040/ChartMVC/MyChart?name=stackedbar";
+            let request = new XMLHttpRequest();
+            request.open(
+              "GET",
+              "http://localhost:8040/ChartMVC/MyChart?name=stackedbar"
+            );
+            request.onload = function () {
+              let stackedBarData = JSON.parse(request.responseText);
+              const overall = JSON.parse(
+                JSON.stringify(stackedBarData.overall)
+              );
+              const reserves = JSON.parse(
+                JSON.stringify(stackedBarData.reserves)
+              );
+              const substitutes = JSON.parse(
+                JSON.stringify(stackedBarData.substitutes)
+              );
+              const others = JSON.parse(JSON.stringify(stackedBarData.others));
+              let data = {
+                labels: overall,
+                datasets: [
+                  {
+                    label: "Reserves",
+                    backgroundColor: "#caf270",
+                    data: reserves,
+                  },
+                  {
+                    label: "Substitutes",
+                    backgroundColor: "#45c490",
+                    data: substitutes,
+                  },
+                  {
+                    label: "Others",
+                    backgroundColor: "#008d93",
+                    data: others,
+                  },
+                ],
+              };
+
+              new Chart("myChart", {
+                type: "bar",
+                data: data,
+                options: {
+                  title: {
+                    display: true,
+                    text: "Positions Of Players with Low Overall",
+                  },
+                  tooltips: {
+                    displayColors: true,
+                    callbacks: {
+                      mode: "x",
+                    },
+                  },
+                  scales: {
+                    xAxes: [
+                      {
+                        stacked: true,
+                        gridLines: {
+                          display: false,
+                        },
+                      },
+                    ],
+                    yAxes: [
+                      {
+                        stacked: true,
+                        ticks: {
+                          beginAtZero: true,
+                        },
+                        type: "linear",
+                      },
+                    ],
+                  },
+                  responsive: true,
+                  maintainAspectRatio: false,
+                  legend: { position: "bottom" },
+                },
+              });
+            };
+            request.send();
           });
         document
           .getElementById("grouped-bar")
           .addEventListener("click", function () {
-            location.href =
-              "http://localhost:8040/ChartMVC/MyChart?name=groupedbarchart";
+            let request = new XMLHttpRequest();
+            request.open(
+              "GET",
+              "http://localhost:8040/ChartMVC/MyChart?name=groupedbar"
+            );
+            request.onload = function () {
+              let groupedBarData = JSON.parse(request.responseText);
+              const teamNames = JSON.parse(
+                JSON.stringify(groupedBarData.teamname)
+              );
+              const avgHeights = JSON.parse(
+                JSON.stringify(groupedBarData.avgheight)
+              );
+              const avgWeights = JSON.parse(
+                JSON.stringify(groupedBarData.avgweight)
+              );
+              let data = {
+                labels: teamNames,
+                datasets: [
+                  {
+                    label: "Average Height",
+                    backgroundColor: "blue",
+                    data: avgHeights,
+                  },
+                  {
+                    label: "Average Weight",
+                    backgroundColor: "red",
+                    data: avgWeights,
+                  },
+                ],
+              };
+              new Chart("myChart", {
+                type: "bar",
+                data: data,
+                options: {
+                  barValueSpacing: 20,
+                  title: {
+                    display: true,
+                    text: "Average Weights and Heights of Players in Clubs",
+                  },
+                  scales: {
+                    yAxes: [
+                      {
+                        ticks: {
+                          min: 0,
+                        },
+                      },
+                    ],
+                  },
+                },
+              });
+            };
+            request.send();
           });
       };
     </script>
