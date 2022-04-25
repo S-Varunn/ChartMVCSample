@@ -32,7 +32,9 @@ public class DatabaseQuerying {
 			statement = conn.createStatement();
 			result = statement.executeQuery(query);
 			while(result.next()) {
-				System.out.println(result.getString(1)+" "+result.getDouble(2)+" "+result.getDouble(3));
+				gbcd.teamName.add(result.getString(1));
+				gbcd.avgHeight.add(result.getDouble(2));
+				gbcd.avgWeight.add(result.getDouble(3));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -47,8 +49,10 @@ public class DatabaseQuerying {
 			statement = conn.createStatement();
 			result = statement.executeQuery(query);
 			while(result.next()) {
-				System.out.println(result.getInt(1)+" "+result.getInt(2)+" "+result.getInt(3)+" "+result.getInt(4)+" "+result.getInt(5));
-			}
+				sbcd.overall.add(result.getInt(1));
+				sbcd.reserves.add(result.getInt(2));
+				sbcd.substitutes.add(result.getInt(3));
+				sbcd.others.add(result.getInt(4));			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
