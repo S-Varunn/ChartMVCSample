@@ -1,0 +1,10 @@
+{"type":"groupedBar",
+    "query":"SELECT club, ROUND(AVG(height_cm),2) as avgheight , ROUND(AVG(weight_kg),2) as avgweight FROM fifa_player GROUP BY club LIMIT 20",
+    "label_marker":"club",
+    "column_schema":[
+        {"alias":"club","display_name":"Club","type":"int"},
+        {"alias":"avgheight","display_name":"Average Height","type":"double"},
+        {"alias":"avgweight","display_name":"Average Weight","type":"double"}
+    ],
+    "column_display_labels":["Club","Average"]
+    }

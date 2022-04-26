@@ -15,6 +15,6 @@
   </servlet>
   <servlet-mapping>
   <servlet-name>ChartDirector</servlet-name>
-  <url-pattern>/MyChart</url-pattern>
+  <url-pattern>*.chart</url-pattern>
   </servlet-mapping>
 </web-app>
