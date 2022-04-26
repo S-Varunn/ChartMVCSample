@@ -6,8 +6,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
   </head>
   <body>
-    <div className="main-container">
-      <div className="headers">
+    <div class="main-container">
+      <div class="headers">
         <h1 style="display: flex; justify-content: center">
           Hello! Welcome to the trail page of the Chart Component!!
         </h1>
@@ -16,7 +16,7 @@
         </p>
       </div>
       <div
-        className="buttons"
+        class="buttons"
         style="display: flex; justify-content: center; padding: 8px"
       >
         <button id="bar" style="padding: 2px; margin: 6px">Bar Chart</button>
@@ -33,26 +33,16 @@
       >
       </canvas>
     </div>
-    <!-- <canvas
-      id="stackedChart"
-      style="width: 100%; max-width: 1200px; max-height: 1000px"
-    >
-    </canvas>
-    <canvas id="groupedChart" style="width: 100%; max-width: 1200px"> </canvas> -->
     <script>
       window.onload = function () {
         document.getElementById("bar").addEventListener("click", function () {
           let request = new XMLHttpRequest();
-          request.open(
-            "GET",
-            "http://localhost:8040/ChartMVC/MyChart?name=bar"
-          );
-
+          request.open("GET", "/ChartMVC/bar.chart");
           request.onload = function () {
             console.log(request.responseText);
             let myBarData = JSON.parse(request.responseText);
-            const xValues = JSON.parse(JSON.stringify(myBarData.xvalues));
-            const yValues = JSON.parse(JSON.stringify(myBarData.yvalues));
+            const xValues = JSON.parse(JSON.stringify(myBarData.label));
+            const yValues = JSON.parse(JSON.stringify(myBarData.dataSet));
             const colours = [
               "blue",
               "black",
@@ -93,22 +83,17 @@
           .getElementById("stacked-bar")
           .addEventListener("click", function () {
             let request = new XMLHttpRequest();
-            request.open(
-              "GET",
-              "http://localhost:8040/ChartMVC/MyChart?name=stackedbar"
-            );
+            request.open("GET", "/ChartMVC/stackedbar.chart");
             request.onload = function () {
+              console.log(request.responseText);
               let stackedBarData = JSON.parse(request.responseText);
-              const overall = JSON.parse(
-                JSON.stringify(stackedBarData.overall)
+              const overall = JSON.parse(JSON.stringify(stackedBarData.label));
+              const dataSet = JSON.parse(
+                JSON.stringify(stackedBarData.dataSet)
               );
-              const reserves = JSON.parse(
-                JSON.stringify(stackedBarData.reserves)
-              );
-              const substitutes = JSON.parse(
-                JSON.stringify(stackedBarData.substitutes)
-              );
-              const others = JSON.parse(JSON.stringify(stackedBarData.others));
+              const reserves = dataSet[0];
+              const substitutes = dataSet[1];
+              const others = dataSet[2];
               let data = {
                 labels: overall,
                 datasets: [
@@ -175,21 +160,18 @@
           .getElementById("grouped-bar")
           .addEventListener("click", function () {
             let request = new XMLHttpRequest();
-            request.open(
-              "GET",
-              "http://localhost:8040/ChartMVC/MyChart?name=groupedbar"
-            );
+            request.open("GET", "/ChartMVC/groupedbar.chart");
             request.onload = function () {
               let groupedBarData = JSON.parse(request.responseText);
+              console.log(request.responseText);
               const teamNames = JSON.parse(
-                JSON.stringify(groupedBarData.teamname)
+                JSON.stringify(groupedBarData.label)
               );
-              const avgHeights = JSON.parse(
-                JSON.stringify(groupedBarData.avgheight)
+              const dataSet = JSON.parse(
+                JSON.stringify(groupedBarData.dataSet)
               );
-              const avgWeights = JSON.parse(
-                JSON.stringify(groupedBarData.avgweight)
-              );
+              const avgHeights = dataSet[0];
+              const avgWeights = dataSet[1];
               let data = {
                 labels: teamNames,
                 datasets: [

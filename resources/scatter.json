@@ -1,0 +1,8 @@
+{"type":"stackedBar",
+    "query":"SELECT overall,COUNT(CASE team_position WHEN 'RES' THEN 1 ELSE NULL END ) AS RES,COUNT(CASE team_position WHEN 'SUB' THEN 1 ELSE NULL END) AS SUB, COUNT(CASE WHEN (team_position !='SUB' AND team_position !='RES') THEN 1 ELSE NULL END) AS other ,COUNT(team_position) AS total FROM fifa_player WHERE overall<=55 GROUP BY overall ORDER BY overall",
+    "label_marker":"overall",
+    "x_plot_columns":["res"],
+    "y_plot_columns":["sub"],
+    "plot_labels":["res and subs"],
+    "column_display_labels":["Overall","No of Players"]
+    }

@@ -1,0 +1,10 @@
+
+{"type":"bar",
+    "query":"SELECT club, SUM(value_eur) AS totalvalue FROM fifa_player GROUP BY club ORDER BY totalvalue DESC LIMIT 10",
+    "label_marker":"club",
+    "column_schema":[
+        {"alias":"club","display_name":"Clubs","type":"String"},
+        {"alias":"totalvalue","display_name":"Total Worth","type":"long"}
+    ],
+    "column_display_labels":["Club","Total Worth in eur"]
+}
