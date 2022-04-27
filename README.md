@@ -91,13 +91,16 @@ The Names of Configuration files are required to be as follows:
  - polar
  - exploded
  - histogram
+
 ***Multi Level***
  - nestedDoughnut
  - stackedBar
  - groupedBar
  - multiLine
  - radar 
+
 ***Two Axis Charts***
  - scatter
+
 ***Three Axis Charts***
  - bubble
