@@ -33,7 +33,7 @@ public class ChartDirector extends HttpServlet{
 		URL url = new URL(req.getRequestURL().toString());
 		String[] filePaths = url.getFile().split("/",10);
 		String propertyFileName = filePaths[filePaths.length-1].split("\\.")[0];
-		File configFile = new File("resources\\"+propertyFileName+".json");
+		File configFile = new File("\\webapp\\resources\\"+propertyFileName+".json");
 //		File configFile = new File("C:\\Users\\Varun\\OneDrive\\Desktop\\Chart\\ChartMVC\\resources\\"+propertyFileName+".json");
         JSONTokener configDataToken = new JSONTokener(new FileInputStream(configFile));
         JSONObject userConfigData = new JSONObject(configDataToken);
