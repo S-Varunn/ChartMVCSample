@@ -11,10 +11,10 @@ The application accepts configuration files under webapp/resources to get the us
   The type of chart to be constructed is also given by the user and the Controller returns data based on the type of chart.
   
   The Charts are divided into 4 types:
-    -Single Level
-    -Multi Level
-    -Two Axis Charts
-    -Three Axis Charts
+-Single Level
+-Multi Level
+-Two Axis Charts
+-Three Axis Charts
   
   The result to the client is constructed with respect to data models provided and is returned.
 
@@ -22,7 +22,8 @@ The application accepts configuration files under webapp/resources to get the us
   
     
   The config files has the following fields: (Schema)
-  -Single Level
+  
+  ###Single Level
     ```
     {"type":"Type of Chart Name" ,
     "query":"The Query Here",
@@ -35,7 +36,7 @@ The application accepts configuration files under webapp/resources to get the us
     "column_display_labels":["Name of chart x axis","Name of chart y axis"]
 }
     ```
-  -Multi Level
+  ###Multi Level
   ```
   {"type":"Type of Chart Name" ,
     "query":"The Query Here",
@@ -50,7 +51,7 @@ The application accepts configuration files under webapp/resources to get the us
     "column_display_labels":["Name of chart x axis","Name of chart y axis"]
 }
   ```
-  -Two Axis Charts
+  ###Two Axis Charts
   ```
   {"type":"Type of Chart Name",
     "query":"The Query Here",
@@ -61,7 +62,7 @@ The application accepts configuration files under webapp/resources to get the us
     "column_display_labels":["Name of chart x axis","Name of chart y axis"]
     }
   ```
-  -Three Axis Charts
+  ###Three Axis Charts
   ```
   {"type":"Type of Chart Name",
     "query":"The Query Here",
