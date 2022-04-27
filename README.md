@@ -6,6 +6,7 @@ The Web Application uses a simple MVC architecture to render Charts using ***Cha
 The application accepts configuration files under webapp/resources to get the user configurations.
 
 ##Workflow
+
 The app consists of a Controller which uses data provided by the Configuration files to query the database and get the required data.
 The type of chart to be constructed is also given by the user and the Controller returns data based on the type of chart.
   
@@ -22,7 +23,8 @@ Configuration files serves as the root of the construction of the Chart.
     
 The config files has the following fields: (Schema)
   
-###Single Level
+###Single Level Charts
+
 ```
 {"type":"Type of Chart Name" ,
 "query":"The Query Here",
@@ -35,7 +37,8 @@ The config files has the following fields: (Schema)
     "column_display_labels":["Name of chart x axis","Name of chart y axis"]
 }
 ```
-###Multi Level
+###Multi Level Charts
+
 ```
 {"type":"Type of Chart Name" ,
 "query":"The Query Here",
@@ -51,6 +54,7 @@ The config files has the following fields: (Schema)
 }
 ```
 ###Two Axis Charts
+
 ```
   {"type":"Type of Chart Name",
     "query":"The Query Here",
@@ -62,6 +66,7 @@ The config files has the following fields: (Schema)
     }
 ```
 ###Three Axis Charts
+
 ```
   {"type":"Type of Chart Name",
     "query":"The Query Here",
@@ -73,10 +78,13 @@ The config files has the following fields: (Schema)
     "column_display_labels":["Name of chart x axis","Name of chart y axis"]
     }
 ```
+
 The config files are of type JSON and is required to have the specified as given below.
   
 The Names of Configuration files are required to be as follows:
+
 -Single Level
+
  -bar 
  -pie
  -line
@@ -84,13 +92,18 @@ The Names of Configuration files are required to be as follows:
  -polar
  -exploded
  -histogram  
+ 
 -Multi Level
+
  -nestedDoughnut
  -stackedBar
  -groupedBar
  -multiLine
  -radar
+ 
 -Two Axis Charts
+
  -scatter
- -Three Axis Charts
+-Three Axis Charts
+
  -bubble
