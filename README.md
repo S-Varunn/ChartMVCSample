@@ -83,21 +83,21 @@ The config files are of type JSON and is required to have the specified as given
   
 The Names of Configuration files are required to be as follows:
 
-- Single Level
+***Single Level***
  - bar 
  - pie
  - line
  - doughnut
  - polar
  - exploded
- - histogram  
-- Multi Level
+ - histogram
+***Multi Level***
  - nestedDoughnut
  - stackedBar
  - groupedBar
  - multiLine
  - radar 
-- Two Axis Charts
+***Two Axis Charts***
  - scatter
-- Three Axis Charts
+***Three Axis Charts***
  - bubble
