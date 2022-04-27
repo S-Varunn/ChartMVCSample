@@ -5,16 +5,16 @@ Welcome to my Chart Component!!
 The Web Application uses a simple MVC architecture to render Charts using ***Chart JS*** and a postgres database to get required data for the chart.
 The application accepts configuration files under webapp/resources to get the user configurations.
 
-##Workflow
+# Workflow
 
 The app consists of a Controller which uses data provided by the Configuration files to query the database and get the required data.
 The type of chart to be constructed is also given by the user and the Controller returns data based on the type of chart.
   
 The Charts are divided into 4 types:
--Single Level
--Multi Level
--Two Axis Charts
--Three Axis Charts
+* Single Level
+* Multi Level
+* Two Axis Charts
+* Three Axis Charts
   
 The result to the client is constructed with respect to data models provided and is returned.
 
@@ -23,7 +23,7 @@ Configuration files serves as the root of the construction of the Chart.
     
 The config files has the following fields: (Schema)
   
-###Single Level Charts
+### Single Level Charts
 
 ```
 {"type":"Type of Chart Name" ,
@@ -37,7 +37,7 @@ The config files has the following fields: (Schema)
     "column_display_labels":["Name of chart x axis","Name of chart y axis"]
 }
 ```
-###Multi Level Charts
+### Multi Level Charts
 
 ```
 {"type":"Type of Chart Name" ,
@@ -53,7 +53,7 @@ The config files has the following fields: (Schema)
 "column_display_labels":["Name of chart x axis","Name of chart y axis"]
 }
 ```
-###Two Axis Charts
+### Two Axis Charts
 
 ```
   {"type":"Type of Chart Name",
@@ -65,7 +65,7 @@ The config files has the following fields: (Schema)
     "column_display_labels":["Name of chart x axis","Name of chart y axis"]
     }
 ```
-###Three Axis Charts
+### Three Axis Charts
 
 ```
   {"type":"Type of Chart Name",
@@ -83,27 +83,21 @@ The config files are of type JSON and is required to have the specified as given
   
 The Names of Configuration files are required to be as follows:
 
--Single Level
-
- -bar 
- -pie
- -line
- -doughnut
- -polar
- -exploded
- -histogram  
- 
--Multi Level
-
- -nestedDoughnut
- -stackedBar
- -groupedBar
- -multiLine
- -radar
- 
--Two Axis Charts
-
- -scatter
--Three Axis Charts
-
- -bubble
+- Single Level
+ - bar 
+ - pie
+ - line
+ - doughnut
+ - polar
+ - exploded
+ - histogram  
+- Multi Level
+ - nestedDoughnut
+ - stackedBar
+ - groupedBar
+ - multiLine
+ - radar 
+- Two Axis Charts
+ - scatter
+- Three Axis Charts
+ - bubble
