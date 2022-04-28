@@ -119,7 +119,7 @@ data = {
 
 payload options: {
   backGroundColour: "blue" / ["blue","green","yellow","green","red"], //Single background colour or List of colours representing each bar
-  typeOfChart: "bar" // the type of chart the data belongs to
+  type: "bar" // the type of chart the data belongs to
 }
 ```
 
@@ -128,7 +128,7 @@ payload options: {
 ```
 data = [
         {
-          label: "Sample A", // Name of dataset 1
+          name: "Sample A", // Name of dataset 1
           data: [{
             x: 'Value',
             y: 'Value',
@@ -141,7 +141,7 @@ data = [
           ],
          ...payload 
         }, {
-         label: "Sample B", // Name of dataset 2
+         name: "Sample B", // Name of dataset 2
           data: [{
             x: 'Value',
             y: 'Value',
@@ -158,7 +158,7 @@ data = [
       
 payload options: {
   backGroundColour: "blue", // single background colour
-  typeOfChart: "bubble" // the type of chart the data belongs to
+  type: "bubble" // the type of chart the data belongs to
 }
 ```
 ### Tree DataSet
@@ -166,21 +166,21 @@ payload options: {
 ```
 data: [
         {
-            "label": "Products", \\Name of dataset
+            "name": "Products", \\Name of dataset
             "value": "150", //value of the data
             ...payload
             "data": [
                 {
-                    "label": "Food & Beverages", \\Name of dataset
+                    "name": "Food & Beverages", \\Name of dataset
                     "value": "80",
                     "data": [
                         {
-                            "label": "Ramen", \\Name of dataset
+                            "name": "Ramen", \\Name of dataset
                             "value": "30",
                             ...payload
                         },
                         {
-                            "label": "Meat", \\Name of dataset
+                            "name": "Meat", \\Name of dataset
                             "value": "50",
                             ...payload
                         }
@@ -188,16 +188,16 @@ data: [
                      ...payload
                 },
                 {
-                    "label": "Drinks", \\Name of dataset
+                    "name": "Drinks", \\Name of dataset
                     "value": "70",
                     "data": [
                         {
-                            "label": "7-Up", \\Name of dataset
+                            "name": "7-Up", \\Name of dataset
                             "value": "40",
                             ...payload
                         },
                         {
-                            "label": "Mountain Dew", \\Name of dataset
+                            "name": "Mountain Dew", \\Name of dataset
                             "value": "30",
                             ...payload
                         }
@@ -209,6 +209,6 @@ data: [
       ]
   payload options: {
   backGroundColour: "blue", //single background colour
-  typeOfChart: "multiLevelPie" // the type of chart the data belongs to
+  type: "multiLevelPie" // the type of chart the data belongs to
 }
 ```
