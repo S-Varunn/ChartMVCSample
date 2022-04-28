@@ -101,7 +101,7 @@ The Names of Configuration files are required to be as follows:
 
 ### Single Variable DataSet
 ``` 
-data = {
+chartData = {
   labels: ["Jan","Feb","Mar","Apr","May"] , //List of label data
   datasets: [
     {
@@ -126,7 +126,8 @@ payload options: {
 ### Multi Variable DataSet
 
 ```
-data = [
+chartData = {
+       datasets: [
         {
           name: "Sample A", // Name of dataset 1
           data: [{
@@ -155,7 +156,7 @@ data = [
          ...payload 
         }
       ]
-      
+    } 
 payload options: {
   backGroundColour: "blue", // single background colour
   type: "bubble" // the type of chart the data belongs to
@@ -164,7 +165,8 @@ payload options: {
 ### Tree DataSet
 
 ```
-data: [
+chartData = {
+      datasets : [
         {
             "name": "Products", \\Name of dataset
             "value": "150", //value of the data
@@ -207,6 +209,7 @@ data: [
              ]
           }
       ]
+    }
   payload options: {
   backGroundColour: "blue", //single background colour
   type: "multiLevelPie" // the type of chart the data belongs to
