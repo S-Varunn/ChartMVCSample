@@ -104,3 +104,104 @@ The Names of Configuration files are required to be as follows:
 
 ***Three Axis Charts***
  - bubble
+
+# Response Data Format
+
+### Single Variable DataSet
+``` 
+data = {
+  labels: 'List of label data',
+  datasets: [
+    {
+      name: 'Name of dataset',
+      data: 'List of data corresponding to label',
+      backgroundColor: 'User configuration colour / List of user configuration colour'
+    },
+    {
+      name: 'Name of Data Set',
+      data: 'List of data corresponding to label',
+      backgroundColor: 'User configuration colour / List of User configuration colour'
+    }
+  ]
+};
+```
+
+### Multi Variable DataSet
+
+```
+data = [
+        {
+          label: "Name of Dataset",
+          backgroundColor: "User Configuration colour",
+          data: [{
+            x: 'Value',
+            y: 'Value',
+            r: 'Value'
+          },{
+            x: 'Value',
+            y: 'Value',
+            r: 'Value'
+          }
+          ]
+        }, {
+         label: "Name of dataset",
+          backgroundColor: "User configuration colour",
+          data: [{
+            x: 'Value',
+            y: 'Value',
+            r: 'Value'
+          },{
+            x: 'Value',
+            y: 'Value',
+            r: 'Value'
+          }]
+        }
+      ]
+```
+### Tree DataSet
+
+```
+data: [
+        {
+            "label": "Name of dataset",
+            "backgroundColor": "User configuration colour",
+            "value": "Value",
+            "data": [
+                {
+                    "label": "Name of dataset",
+                    "color": "User configuration colour",
+                    "value": "Value",
+                    "data": [
+                        {
+                            "label": "Name of dataset",
+                            "color": "User configuration colour",
+                            "value": "Value",
+                        },
+                        {
+                            "label": "Name of dataset",
+                            "color": "User configuration colour",
+                            "value": "Value",
+                        }
+                     ]
+                },
+                {
+                    "label": "Name of dataset",
+                    "color": "User configuration colour",
+                    "value": "Value",
+                    "data": [
+                        {
+                            "label": "Name of dataset",
+                            "color": "User configuration colour",
+                            "value": "Value",
+                        },
+                        {
+                            "label": "Name of dataset",
+                            "color": "User configuration colour",
+                            "value": "Value",
+                        }
+                    ]
+                }
+            ]
+          }
+      ]
+```
