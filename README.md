@@ -14,6 +14,7 @@ The Charts are divided into 3 types:
 * Single Level / Multi Level
 * Two Axis Charts
 * Three Axis Charts
+* Tree Charts
   
 The result to the client is constructed with respect to data models provided and is returned.
 
