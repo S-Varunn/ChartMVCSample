@@ -102,20 +102,25 @@ The Names of Configuration files are required to be as follows:
 ### Single Variable DataSet
 ``` 
 data = {
-  labels: 'List of label data',
+  labels: ["Jan","Feb","Mar","Apr","May"] , //List of label data
   datasets: [
     {
-      name: 'Name of dataset',
-      data: 'List of data corresponding to label',
-      backgroundColor: 'User configuration colour / List of user configuration colour'
+      name: "Marketing Team Profits", //Name of dataset
+      data: ["100000","120000","125000","120000","150000"], //List of data corresponding to label
+      ...payload
     },
     {
-      name: 'Name of Data Set',
-      data: 'List of data corresponding to label',
-      backgroundColor: 'User configuration colour / List of User configuration colour'
+      name: "Sales Team Profits", //Name of dataset
+      data: ["200000","220000","225000","220000","250000"], //List of data corresponding to label
+      ...payload
     }
   ]
 };
+
+payload options: {
+  backGroundColour: "blue" / ["blue","green","yellow","green","red"], //Single background colour or List of colours representing each bar
+  typeOfChart: "bar" // the type of chart the data belongs to
+}
 ```
 
 ### Multi Variable DataSet
@@ -123,8 +128,7 @@ data = {
 ```
 data = [
         {
-          label: "Name of Dataset",
-          backgroundColor: "User Configuration colour",
+          label: "Sample A", // Name of dataset 1
           data: [{
             x: 'Value',
             y: 'Value',
@@ -134,10 +138,10 @@ data = [
             y: 'Value',
             r: 'Value'
           }
-          ]
+          ],
+         ...payload 
         }, {
-         label: "Name of dataset",
-          backgroundColor: "User configuration colour",
+         label: "Sample B", // Name of dataset 2
           data: [{
             x: 'Value',
             y: 'Value',
@@ -146,54 +150,65 @@ data = [
             x: 'Value',
             y: 'Value',
             r: 'Value'
-          }]
+          }
+          ],
+         ...payload 
         }
       ]
+      
+payload options: {
+  backGroundColour: "blue", // single background colour
+  typeOfChart: "bubble" // the type of chart the data belongs to
+}
 ```
 ### Tree DataSet
 
 ```
 data: [
         {
-            "label": "Name of dataset",
-            "backgroundColor": "User configuration colour",
-            "value": "Value",
+            "label": "Products", \\Name of dataset
+            "value": "150", //value of the data
+            ...payload
             "data": [
                 {
-                    "label": "Name of dataset",
-                    "color": "User configuration colour",
-                    "value": "Value",
+                    "label": "Food & Beverages", \\Name of dataset
+                    "value": "80",
                     "data": [
                         {
-                            "label": "Name of dataset",
-                            "color": "User configuration colour",
-                            "value": "Value",
+                            "label": "Ramen", \\Name of dataset
+                            "value": "30",
+                            ...payload
                         },
                         {
-                            "label": "Name of dataset",
-                            "color": "User configuration colour",
-                            "value": "Value",
+                            "label": "Meat", \\Name of dataset
+                            "value": "50",
+                            ...payload
                         }
-                     ]
+                     ],
+                     ...payload
                 },
                 {
-                    "label": "Name of dataset",
-                    "color": "User configuration colour",
-                    "value": "Value",
+                    "label": "Drinks", \\Name of dataset
+                    "value": "70",
                     "data": [
                         {
-                            "label": "Name of dataset",
-                            "color": "User configuration colour",
-                            "value": "Value",
+                            "label": "7-Up", \\Name of dataset
+                            "value": "40",
+                            ...payload
                         },
                         {
-                            "label": "Name of dataset",
-                            "color": "User configuration colour",
-                            "value": "Value",
+                            "label": "Mountain Dew", \\Name of dataset
+                            "value": "30",
+                            ...payload
                         }
-                    ]
+                    ],
+                    ...payload
                 }
-            ]
+             ]
           }
       ]
+  payload options: {
+  backGroundColour: "blue", //single background colour
+  typeOfChart: "multiLevelPie" // the type of chart the data belongs to
+}
 ```
