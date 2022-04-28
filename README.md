@@ -10,9 +10,8 @@ The application accepts configuration files under webapp/resources to get the us
 The app consists of a Controller which uses data provided by the Configuration files to query the database and get the required data.
 The type of chart to be constructed is also given by the user and the Controller returns data based on the type of chart.
   
-The Charts are divided into 4 types:
-* Single Level
-* Multi Level
+The Charts are divided into 3 types:
+* Single Level / Multi Level
 * Two Axis Charts
 * Three Axis Charts
   
@@ -23,40 +22,25 @@ Configuration files serves as the root of the construction of the Chart.
     
 The config files has the following fields: (Schema)
   
-### Single Level Charts
+### Single/Multi Level Charts
 
 ```
 {"type":"Type of Chart Name" ,
 "query":"The Query Here",
 "label_marker":"The column in table to be taken as label's column here",
 "column_schema":[
-    {"alias":"Name of the table column from query result","display_name":"The name to be displayed on the chart","type":"Data type of column"},
-    {"alias":"","display_name":"","type":""}
-      //Only two fields is allowed!
+    {"alias":"Name of the table column from query result","display_name":"The name to be displayed on the chart",
+    "type":"Data type of column","backgroundColor":"Background Colour of chart -- Single or List of colours"},
+    {"alias":"","display_name":"","type":"","backgroundColor": ' "" or [] ' }
     ],
     "column_display_labels":["Name of chart x axis","Name of chart y axis"]
 }
 ```
-### Multi Level Charts
 
-```
-{"type":"Type of Chart Name" ,
-"query":"The Query Here",
-"label_marker":"The column in table to be taken as label's column here",
-"column_schema":[
-   {"alias":"Name of the table column from query result","display_name":"The name to be displayed on the chart","type":"Data type of column"},
-   {"alias":"","display_name":"","type":""}
-   {"alias":"","display_name":"","type":""}
-   {"alias":"","display_name":"","type":""}
-     //Any Number of fields allowed
-    ],
-"column_display_labels":["Name of chart x axis","Name of chart y axis"]
-}
-```
 ### Two Axis Charts
 
 ```
-  {"type":"Type of Chart Name",
+  { "type":"Type of Chart Name",
     "query":"The Query Here",
     "label_marker":"The column in table to be taken as label's column here",
     "x_plot_columns":[List of columns to be considered as x plots in table],
@@ -79,11 +63,17 @@ The config files has the following fields: (Schema)
     }
 ```
 
+### Tree Charts 
+
+```
+Coming soon!
+```
+
 The config files are of type JSON and is required to have the specified as given below.
   
 The Names of Configuration files are required to be as follows:
 
-***Single Level***
+***Single Level / Multi Level***
  - bar 
  - pie
  - line
@@ -91,8 +81,6 @@ The Names of Configuration files are required to be as follows:
  - polar
  - exploded
  - histogram
-
-***Multi Level***
  - nestedDoughnut
  - stackedBar
  - groupedBar
@@ -104,6 +92,9 @@ The Names of Configuration files are required to be as follows:
 
 ***Three Axis Charts***
  - bubble
+
+***Tree Charts***
+ - Coming Soon!
 
 # Response Data Format
 
